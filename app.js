@@ -1,12 +1,10 @@
-const http = require('http');
-const port = process.env.PORT || 3000
+var express = require('express');
+var app = express();
+var path = require('path');
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
-  res.end('<h1>Hello World</h1>');
+// viewed at http://localhost:8080
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-server.listen(port,() => {
-  console.log(`Server running at port `+port);
-});
+app.listen(8080);
